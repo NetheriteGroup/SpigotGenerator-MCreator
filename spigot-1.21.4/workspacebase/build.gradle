@@ -1,0 +1,89 @@
+plugins {
+	id "java"
+}
+
+base.archivesName = "plugin"
+
+def toolsDir = layout.projectDirectory.dir("build/tools")
+def runDir = layout.projectDirectory.dir("run")
+def pluginsDir = runDir.dir("plugins")
+def buildToolsJar = toolsDir.file("BuildTools.jar")
+def spigotJar = runDir.file("spigot-1.21.4.jar")
+
+repositories {
+	mavenCentral()
+	maven {
+		name = "spigot-repo"
+		url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
+	}
+	maven {
+		name = "sonatype"
+		url = "https://oss.sonatype.org/content/groups/public/"
+	}
+}
+
+dependencies {
+	compileOnly "org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT"
+}
+
+
+def javaVersion = JavaVersion.VERSION_21
+
+java {
+	sourceCompatibility = javaVersion
+	targetCompatibility = javaVersion
+	toolchain.languageVersion = JavaLanguageVersion.of(javaVersion.toString())
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.release = javaVersion.toString() as Integer
+}
+
+tasks.register('prepareDirs') {
+	group 'spigot'
+	doLast {
+		toolsDir.asFile.mkdirs()
+		pluginsDir.asFile.mkdirs()
+	}
+}
+
+tasks.register('downloadBuildTools') {
+	group 'spigot'
+	dependsOn 'prepareDirs'
+
+	doLast {
+		if (!buildToolsJar.asFile.exists()) {
+			new URL("https://hub.spigotmc.org/jenkins/job/BuildTools/lastStableBuild/artifact/target/BuildTools.jar").withInputStream { i ->
+				buildToolsJar.asFile.withOutputStream { it << i }
+			}
+		}
+	}
+}
+
+tasks.register('buildSpigot', Exec) {
+	group 'spigot'
+	dependsOn tasks.downloadBuildTools
+
+	workingDir = runDir.asFile
+	commandLine = ["java", "-jar", buildToolsJar.asFile.absolutePath, "--rev", "1.21.4"]
+	onlyIf { !spigotJar.asFile.exists() }
+}
+
+tasks.register('copyPlugin', Copy) {
+	group 'spigot'
+	dependsOn tasks.named('jar')
+
+	from layout.buildDirectory.file("libs/plugin.jar")
+	into layout.projectDirectory.dir("run/plugins")
+}
+
+tasks.register('runSpigotServer', Exec) {
+	group 'spigot'
+	dependsOn tasks.build
+	dependsOn tasks.copyPlugin
+
+	workingDir = file("run")
+	commandLine = ["java", "-jar", spigotJar] as List<String>
+}
+
+//apply from: 'mcreator.gradle'

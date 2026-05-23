@@ -1,1 +1,14 @@
-# Spigotgenerator-1.21.4-2026.1
+# Spigot Generator for MCreator 1.21.4
+An unofficial plugin for [MCreator](https://mcreator.net/), a code generator for Minecraft. This plugin adds a [Spigot](https://www.spigotmc.org/) generator.
+**The current targeted Minecraft version is 1.21.4.** (Based on the original framework by Goldorion).
+## Features
+* Commands
+* Procedures
+## Information
+- Make sure you use MCreator 2026.1
+- Plugins also require [Spigot](https://getbukkit.org/download/spigot) to function properly.
+## Credits/License
+- Updated to 1.21.4 by **\Netherite Group**
+- Original Dev - [Goldorion](https://github.com/Goldorion)
+- Contributors (previous Minecraft versions) - Klemen
+Licensed under the GNU Lesser General Public License, version 3.0

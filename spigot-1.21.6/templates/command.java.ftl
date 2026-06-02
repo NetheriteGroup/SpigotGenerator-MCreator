@@ -1,6 +1,6 @@
 <#--
  # This file is part of Spigot-Generator-MCreator.
- # Copyright (C) 2020-2023, Goldorion, opensource contributors
+ # Copyright (C) 2020-2023, Netherite Group, opensource contributors
  #
  # Spigot-Generator-MCreator is free software: you can redistribute it and/or modify
  # it under the terms of the GNU Lesser General Public License as published by
@@ -19,8 +19,12 @@
 
 package ${package}.commands;
 
-import org.bukkit.command.Command;
+import org.bukkit.World;
 import org.bukkit.entity.Entity;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.BlockCommandSender;
 
 public class ${name} implements CommandExecutor {
 
@@ -39,16 +43,15 @@ public class ${name} implements CommandExecutor {
 				entity = (Entity) sender;
 
 				x = entity.getLocation().getX();
-				y = entity.getLocation().getX();
-				z = entity.getLocation().getX();
+				y = entity.getLocation().getY();
+				z = entity.getLocation().getZ();
 
 				world = entity.getWorld();
 
-
 			} else if (sender instanceof BlockCommandSender) {
 				x = ((BlockCommandSender) sender).getBlock().getLocation().getX();
-				y = ((BlockCommandSender) sender).getBlock().getLocation().getX();
-				z = ((BlockCommandSender) sender).getBlock().getLocation().getX();
+				y = ((BlockCommandSender) sender).getBlock().getLocation().getY();
+				z = ((BlockCommandSender) sender).getBlock().getLocation().getZ();
 
 				world = ((BlockCommandSender) sender).getBlock().getWorld();
 			}

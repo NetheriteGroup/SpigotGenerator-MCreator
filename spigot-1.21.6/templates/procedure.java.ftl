@@ -1,6 +1,6 @@
 <#--
  # This file is part of Spigot-Generator-MCreator.
- # Copyright (C) 2020-2023, Goldorion, opensource contributors
+ # Copyright (C) 2020-2023, Netherite Group, opensource contributors
  #
  # Spigot-Generator-MCreator is free software: you can redistribute it and/or modify
  # it under the terms of the GNU Lesser General Public License as published by
@@ -18,6 +18,8 @@
 package ${package}.procedures;
 
 import javax.annotation.Nullable;
+import org.bukkit.event.Listener;
+import org.bukkit.event.Event;
 
 <#assign nullableDependencies = []/>
 <#list dependencies as dependency>
@@ -37,7 +39,7 @@ import javax.annotation.Nullable;
 <#if trigger_code?has_content>
 ${trigger_code}
 <#else>
-public class ${name}Procedure implements Listener{
+public class ${name}Procedure implements Listener {
 </#if>
 
 	<#if trigger_code?has_content>

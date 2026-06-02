@@ -14,6 +14,7 @@
 
 package ${package};
 
+import org.bukkit.Server;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class ${JavaModName} extends JavaPlugin {

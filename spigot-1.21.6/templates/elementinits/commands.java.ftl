@@ -1,6 +1,6 @@
 <#--
  # This file is part of Spigot-Generator-MCreator.
- # Copyright (C) 2020-2023, Goldorion, opensource contributors
+ # Copyright (C) 2020-2023, Netherite Group, opensource contributors
  #
  # Spigot-Generator-MCreator is free software: you can redistribute it and/or modify
  # it under the terms of the GNU Lesser General Public License as published by
@@ -17,11 +17,13 @@
 <#-- @formatter:off -->
 package ${package}.init;
 
-public class ${JavaModName}Procedures {
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class ${JavaModName}Commands {
 
 	public static void register(JavaPlugin plugin) {
-	    <#list procedures as procedure>
-			plugin.getServer().getPluginManager().registerEvents(new ${procedure.getModElement().getName()}Procedure(), plugin);
+	    <#list commands as command>
+			plugin.getCommand("${command.commandName}").setExecutor(new ${command.getModElement().getName()}());
 	    </#list>
 	}
 }

@@ -1,12 +1,12 @@
 {
-  "id": "generator-spigot-1.21.4",
+  "id": "generator-spigot-1.21.6",
   "supportedversions": [
     2026001
   ],
   "info": {
-    "name": "Minecraft Spigot 1.21.4 Generator",
+    "name": "Minecraft Spigot 1.21.6 Generator",
     "version": "1.0",
-    "description": "A Spigot Generator for 1.21.4",
+    "description": "A Spigot Generator for 1.21.6",
     "author": "Netherite Group"
   }
 }

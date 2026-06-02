@@ -1,6 +1,6 @@
 <#--
  # This file is part of Spigot-Generator-MCreator.
- # Copyright (C) 2020-2023, Goldorion, opensource contributors
+ # Copyright (C) 2020-2023, Netherite Group, opensource contributors
  #
  # Spigot-Generator-MCreator is free software: you can redistribute it and/or modify
  # it under the terms of the GNU Lesser General Public License as published by
@@ -17,13 +17,13 @@
 <#-- @formatter:off -->
 package ${package}.init;
 
-import org.bukkit.enchantments.Enchantment;
+import org.bukkit.plugin.java.JavaPlugin;
 
-public class ${JavaModName}Enchantments {
+public class ${JavaModName}Procedures {
 
-	public static void register() {
-	    <#list enchantments as enchantment>
-	        Enchantment.registerEnchantment(new ${enchantment.getModElement().getName()}Enchantment());
+	public static void register(JavaPlugin plugin) {
+	    <#list procedures as procedure>
+			plugin.getServer().getPluginManager().registerEvents(new ${procedure.getModElement().getName()}Procedure(), plugin);
 	    </#list>
 	}
 }

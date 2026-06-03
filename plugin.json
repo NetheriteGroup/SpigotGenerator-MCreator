@@ -1,12 +1,15 @@
 {
-  "id": "generator-spigot-1.21.6",
+  "id": "generator-spigot-1.21.8",
   "supportedversions": [
-    2026001
+    202600222416,
+    202600299999
   ],
   "info": {
-    "name": "Minecraft Spigot 1.21.6 Generator",
+    "name": "Minecraft Spigot 1.21.8 Generator",
     "version": "1.0",
-    "description": "A Spigot Generator for 1.21.6",
-    "author": "Netherite Group"
+    "description": "A Spigot Generator for MCreator ",
+    "author": "Netherite Group (Based on Goldorion's work)",
+    "credits": "Based on Goldorion's spigot generator",
+    "pluginPageID": 64516
   }
 }

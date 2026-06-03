@@ -14,8 +14,8 @@
 
 package ${package};
 
-import org.bukkit.Server;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.Server;
 
 public class ${JavaModName} extends JavaPlugin {
 
@@ -27,8 +27,8 @@ public class ${JavaModName} extends JavaPlugin {
 	    plugin = this;
 		server = this.getServer();
 
-		<#if w.hasElementsOfType("command")>${JavaModName}Commands.register(this);</#if>
-		<#if w.hasElementsOfType("procedure")>${JavaModName}Procedures.register(this);</#if>
+		<#if generator.getWorkspace().hasElementsOfType("command")>${package}.init.${JavaModName}Commands.register(this);</#if>
+		<#if generator.getWorkspace().hasElementsOfType("procedure")>${package}.init.${JavaModName}Procedures.register(this);</#if>
 	}
 
 	@Override

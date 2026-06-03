@@ -11,7 +11,7 @@ website: ${settings.getWebsiteURL()}
 api-version: 1.21
 
 commands:
-  <#list w.getElementsOfType("command") as command>
+  <#list generator.getWorkspace().getElementsOfType("command") as command>
   ${command.getGeneratableElement().commandName}:
     permission: ${command.getGeneratableElement().commandName}.use
   </#list>

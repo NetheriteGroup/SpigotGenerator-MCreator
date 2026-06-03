@@ -1,10 +1,10 @@
-name: Minecraft Spigot for 1.21.6
+name: Minecraft Spigot for @minecraft
 status: stable
 buildfileversion: 1.1
 subversion: 6
 
 import:
-  - datapack-1.21.4:
+  - datapack-1.21.8:
     exclude:
       - features
       - jsontriggers

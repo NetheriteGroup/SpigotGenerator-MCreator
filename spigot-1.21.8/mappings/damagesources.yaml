@@ -36,7 +36,7 @@ UNATTRIBUTED_FIREBALL: EntityDamageEvent.DamageCause.ENTITY_EXPLOSION
 WITHER_SKULL: EntityDamageEvent.DamageCause.WITHER
 THROWN: EntityDamageEvent.DamageCause.PROJECTILE
 INDIRECT_MAGIC: EntityDamageEvent.DamageCause.MAGIC
-THORNS: ENTITY_EXPLOSION.THORNS
+THORNS: EntityDamageEvent.DamageCause.THORNS
 EXPLOSION: EntityDamageEvent.DamageCause.BLOCK_EXPLOSION
 PLAYER_EXPLOSION: EntityDamageEvent.DamageCause.ENTITY_EXPLOSION
 SONIC_BOOM: EntityDamageEvent.DamageCause.SONIC_BOOM

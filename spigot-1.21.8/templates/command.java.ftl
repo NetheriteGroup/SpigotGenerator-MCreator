@@ -1,30 +1,14 @@
-<#--
- # This file is part of Spigot-Generator-MCreator.
- # Copyright (C) 2020-2023, Netherite Group, opensource contributors
- #
- # Spigot-Generator-MCreator is free software: you can redistribute it and/or modify
- # it under the terms of the GNU Lesser General Public License as published by
- # the Free Software Foundation, either version 3 of the License, or
- # (at your option) any later version.
- # Spigot-Generator-MCreator is distributed in the hope that it will be useful,
- # but WITHOUT ANY WARRANTY; without even the implied warranty of
- # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- # GNU Lesser General Public License for more details.
- #
- # You should have received a copy of the GNU Lesser General Public License
- # along with Spigot-Generator-MCreator.  If not, see <https://www.gnu.org/licenses/>.
--->
 <#-- @formatter:off -->
-<#include "procedures.java.ftl">
-
 package ${package}.commands;
 
-import org.bukkit.World;
-import org.bukkit.entity.Entity;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
+import org.bukkit.World;
 import org.bukkit.command.BlockCommandSender;
+
+import ${package}.procedures.*;
 
 public class ${name} implements CommandExecutor {
 
@@ -36,27 +20,24 @@ public class ${name} implements CommandExecutor {
 			double z = 0;
 
 			Entity entity = null;
-
 			World world = null;
 
 			if (sender instanceof Entity) {
 				entity = (Entity) sender;
-
 				x = entity.getLocation().getX();
 				y = entity.getLocation().getY();
 				z = entity.getLocation().getZ();
-
 				world = entity.getWorld();
-
 			} else if (sender instanceof BlockCommandSender) {
 				x = ((BlockCommandSender) sender).getBlock().getLocation().getX();
 				y = ((BlockCommandSender) sender).getBlock().getLocation().getY();
 				z = ((BlockCommandSender) sender).getBlock().getLocation().getZ();
-
 				world = ((BlockCommandSender) sender).getBlock().getWorld();
 			}
 
-			${argscode}
+			<#list procedures as procedure>
+			${procedure.getModElement().getName()}Procedure.execute();
+			</#list>
 
 			return true;
 		}

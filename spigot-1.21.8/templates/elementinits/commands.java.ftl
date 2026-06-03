@@ -1,6 +1,6 @@
 <#--
  # This file is part of Spigot-Generator-MCreator.
- # Copyright (C) 2020-2023, Netherite Group, opensource contributors
+ # Copyright (C) 2020-2023, Goldorion, opensource contributors
  #
  # Spigot-Generator-MCreator is free software: you can redistribute it and/or modify
  # it under the terms of the GNU Lesser General Public License as published by
@@ -18,6 +18,7 @@
 package ${package}.init;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import ${package}.commands.*;
 
 public class ${JavaModName}Commands {
 
